@@ -87,6 +87,14 @@ inline Vector3D operator^(const Vector3D& u, const Vector3D& v) {
                   u.x_ * v.y_ - u.y_ * v.x_);
 }
 
+inline Vector3D Cross(const Vector3D& u, const Vector3D& v) {
+  Vector3D result;
+  result.x_ = u.y_ * v.z_ - u.z_ * v.y_;
+  result.y_ = u.z_ * v.x_ - u.x_ * v.z_;
+  result.z_ = u.x_ * v.y_ - u.y_ * v.x_;
+  return result;
+}
+
 // dot product
 inline float operator*(const Vector3D& u, const Vector3D& v) {
   return static_cast<float>(u.x_ * v.x_ + u.y_ * v.y_ + u.z_ * v.z_);
@@ -122,6 +130,12 @@ float Magnitude(const Vector3D& v) { return sqrtf(v * v); }
 float MagnitudeSq(const Vector3D& v) { return v * v; }
 
 Vector3D Normalized(const Vector3D& v) { return v.Normalized(); }
+
+inline float Angle(const Vector3D& u, const Vector3D& v) {
+  float m = sqrtf(MagnitudeSq(u) * MagnitudeSq(v));
+  return acos(Dot(u, v) / m);
+}
+
 /*
  * triple scalar product
  * s = u dot (v cross w)

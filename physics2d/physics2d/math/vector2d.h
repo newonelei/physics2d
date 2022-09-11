@@ -77,7 +77,9 @@ float Magnitude(const Vector2D& v);
 float MagnitudeSq(const Vector2D& v);
 
 Vector2D Normalized(const Vector2D& v);
-    /*
+
+float Angle(const Vector2D& u, const Vector2D& v);
+/*
  * triple scalar product
  * s = u dot (v cross w)
  */

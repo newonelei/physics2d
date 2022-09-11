@@ -8,7 +8,9 @@ Vector2D::Vector2D(void) : x_(0.0f), y_(0.0f) {}
 
 inline Vector2D::Vector2D(float xi, float yi) : x_(xi), y_(yi) {}
 
-inline float Vector2D::Magnitude(void) const { return sqrtf(Dot(*this, *this)); }
+inline float Vector2D::Magnitude(void) const {
+  return sqrtf(Dot(*this, *this));
+}
 
 inline void Vector2D::Normalize(void) {
   constexpr float tol = 0.00001f;
@@ -115,6 +117,12 @@ float MagnitudeSq(const Vector2D& v) { return v * v; }
 
 Vector2D Normalized(const Vector2D& v) { return v.Normalized(); }
 
+
+inline float Angle(const Vector2D& u, const Vector2D& v)
+{
+	float m = sqrtf(MagnitudeSq(u) * MagnitudeSq(v));
+	return acos(Dot(u, v) / m);
+}
 /*
  * triple scalar product
  * s = u dot (v cross w)

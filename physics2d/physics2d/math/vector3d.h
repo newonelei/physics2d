@@ -41,6 +41,7 @@ Vector3D operator-(const Vector3D& u, const Vector3D& v);
  * vector cross product
  */
 Vector3D operator^(const Vector3D& u, const Vector3D& v);
+Vector3D Cross(const Vector3D& u, const Vector3D& v);
 
 // dot product
 float operator*(const Vector3D& u, const Vector3D& v);
@@ -67,6 +68,8 @@ float Magnitude(const Vector3D& v);
 float MagnitudeSq(const Vector3D& v);
 
 Vector3D Normalized(const Vector3D& v);
+
+float Angle(const Vector3D& u, const Vector3D& v);
     /*
  * triple scalar product
  * s = u dot (v cross w)
