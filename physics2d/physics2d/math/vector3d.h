@@ -70,6 +70,9 @@ float MagnitudeSq(const Vector3D& v);
 Vector3D Normalized(const Vector3D& v);
 
 float Angle(const Vector3D& u, const Vector3D& v);
+
+Vector3D Project(const Vector3D& len, const Vector3D& dir);
+Vector3D Perpendicular(const Vector3D& len, const Vector3D& dir);
     /*
  * triple scalar product
  * s = u dot (v cross w)

@@ -117,12 +117,23 @@ float MagnitudeSq(const Vector2D& v) { return v * v; }
 
 Vector2D Normalized(const Vector2D& v) { return v.Normalized(); }
 
-
-inline float Angle(const Vector2D& u, const Vector2D& v)
-{
-	float m = sqrtf(MagnitudeSq(u) * MagnitudeSq(v));
-	return acos(Dot(u, v) / m);
+inline float Angle(const Vector2D& u, const Vector2D& v) {
+  float m = sqrtf(MagnitudeSq(u) * MagnitudeSq(v));
+  return acos(Dot(u, v) / m);
 }
+
+inline Vector2D Project(const Vector2D& len, const Vector2D& dir) {
+  // Proj = Dot(a, b) * b / (||B|| * ||B||)
+  float dot = Dot(len, dir);
+  float magSq = MagnitudeSq(dir);
+  return dir * (dot / magSq);
+}
+
+inline Vector2D Perpendicular(const Vector2D& len,
+                              const Vector2D& dir) {
+  return len - Project(len, dir);
+}
+
 /*
  * triple scalar product
  * s = u dot (v cross w)
