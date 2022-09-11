@@ -82,6 +82,10 @@ float Angle(const Vector2D& u, const Vector2D& v);
 
 Vector2D Project(const Vector2D& len, const Vector2D& dir);
 Vector2D Perpendicular(const Vector2D& len, const Vector2D& dir);
+
+// r = v - 2 (v * n) n
+// or r = v - 2 Proj(v -> n), n is unit normal vector
+Vector2D Reflection(const Vector2D& v, const Vector2D& normal);
 /*
  * triple scalar product
  * s = u dot (v cross w)

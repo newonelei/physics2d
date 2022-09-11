@@ -134,6 +134,12 @@ inline Vector2D Perpendicular(const Vector2D& len,
   return len - Project(len, dir);
 }
 
+inline Vector2D Reflection(const Vector2D& v, const Vector2D& normal)
+{
+	float d = Dot(v, normal);
+	return v - 2.0f * d * normal;
+}
+
 /*
  * triple scalar product
  * s = u dot (v cross w)

@@ -147,6 +147,11 @@ inline Vector3D Perpendicular(const Vector3D& len, const Vector3D& dir) {
   return len - Project(len, dir);
 }
 
+inline Vector3D Reflection(const Vector3D& v, const Vector3D& normal) {
+  float d = Dot(v, normal);
+  return v - 2.0f * d * normal;
+}
+
 /*
  * triple scalar product
  * s = u dot (v cross w)

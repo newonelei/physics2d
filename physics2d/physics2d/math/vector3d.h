@@ -73,7 +73,12 @@ float Angle(const Vector3D& u, const Vector3D& v);
 
 Vector3D Project(const Vector3D& len, const Vector3D& dir);
 Vector3D Perpendicular(const Vector3D& len, const Vector3D& dir);
-    /*
+
+// r = v - 2 (v * n) n
+// or r = v - 2 Proj(v -> n), n is unit normal vector
+Vector3D Reflection(const Vector3D& v, const Vector3D& normal);
+
+ /*
  * triple scalar product
  * s = u dot (v cross w)
  */
