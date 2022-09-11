@@ -10,8 +10,9 @@ typedef struct Vector2D {
   Vector2D(void);
   Vector2D(float xi, float yi);
 
-  float Magnitude(void);
+  float Magnitude(void) const;
   void Normalize(void);
+  Vector2D Normalized(void) const;
   void Reverse(void);
 
   float& operator[](int i) {
@@ -75,8 +76,8 @@ bool operator!=(const Vector2D& u, const Vector2D& v);
 float Magnitude(const Vector2D& v);
 float MagnitudeSq(const Vector2D& v);
 
-
-/*
+Vector2D Normalized(const Vector2D& v);
+    /*
  * triple scalar product
  * s = u dot (v cross w)
  */

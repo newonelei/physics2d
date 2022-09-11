@@ -8,19 +8,29 @@ Vector2D::Vector2D(void) : x_(0.0f), y_(0.0f) {}
 
 inline Vector2D::Vector2D(float xi, float yi) : x_(xi), y_(yi) {}
 
-inline float Vector2D::Magnitude(void) {
-  return sqrtf(Dot(*this, *this));
-}
+inline float Vector2D::Magnitude(void) const { return sqrtf(Dot(*this, *this)); }
 
 inline void Vector2D::Normalize(void) {
   constexpr float tol = 0.00001f;
   float m = Magnitude();
-  if (m < tol) m = 1;
+  if (m < tol) {
+    // if magnitude is too small, we need to ignore it
+    // otherwise the x_ / m will be super big so that float cannot contains that
+    // number
+    m = 1;
+  }
+
   x_ /= m;
   y_ /= m;
 
   if (fabs(x_) < tol) x_ = 0.0f;
   if (fabs(y_) < tol) y_ = 0.0f;
+}
+
+Vector2D Vector2D::Normalized(void) const {
+  Vector2D vec = *this;
+  vec.Normalize();
+  return vec;
 }
 
 inline void Vector2D::Reverse(void) {
@@ -102,6 +112,8 @@ bool operator!=(const Vector2D& u, const Vector2D& v) { return !(u == v); }
 
 float Magnitude(const Vector2D& v) { return sqrtf(v * v); }
 float MagnitudeSq(const Vector2D& v) { return v * v; }
+
+Vector2D Normalized(const Vector2D& v) { return v.Normalized(); }
 
 /*
  * triple scalar product

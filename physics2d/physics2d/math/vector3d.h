@@ -9,8 +9,9 @@ typedef struct Vector3D {
   Vector3D(void);
   Vector3D(float xi, float yi, float zi);
 
-  float Magnitude(void);
+  float Magnitude(void) const;
   void Normalize(void);
+  Vector3D Normalized(void) const;
   void Reverse(void);
 
   Vector3D& operator+=(const Vector3D& u);
@@ -64,6 +65,8 @@ bool operator!=(const Vector3D& u, const Vector3D& v);
 
 float Magnitude(const Vector3D& v);
 float MagnitudeSq(const Vector3D& v);
+
+Vector3D Normalized(const Vector3D& v);
     /*
  * triple scalar product
  * s = u dot (v cross w)
