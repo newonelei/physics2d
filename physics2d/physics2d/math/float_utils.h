@@ -21,8 +21,8 @@ www.realtimecollisiondetection.net/pubs/Tolerances
 #define CMP(x, y) \
   (fabsf((x) - (y)) <= FLT_EPSILON * fmaxf(1.0f, fmaxf(fabsf(x), fabsf(y))))
 
-//convert between radians and degrees
-#define RAD2DEG(x) ((x) * 57.295754f)
-#define DEG2RAD(x) ((x) * 0.0174533f)
+// convert between radians and degrees
+#define RAD2DEG(x) ((x)*57.295754f)
+#define DEG2RAD(x) ((x)*0.0174533f)
 
 #endif

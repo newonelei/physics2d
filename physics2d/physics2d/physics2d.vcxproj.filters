@@ -36,6 +36,18 @@
     <ClCompile Include="math\vector3d.cpp">
       <Filter>Source Files\math</Filter>
     </ClCompile>
+    <ClCompile Include="math\matrix2d.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\matrices.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\matrix3d.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\matrix4d.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="primitives\AABB.h">
@@ -63,6 +75,15 @@
       <Filter>Header Files\math</Filter>
     </ClInclude>
     <ClInclude Include="math\float_utils.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\matrix2d.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\matrix3d.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\matrix4d.h">
       <Filter>Header Files\math</Filter>
     </ClInclude>
   </ItemGroup>

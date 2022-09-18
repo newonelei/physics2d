@@ -16,7 +16,7 @@ typedef struct Vector2D {
   void Reverse(void);
 
   float& operator[](int i) {
-    assert(i >= 0 && i < 3);
+    assert(i >= 0 && i < 2);
     return as_array_[i];
   }
 
