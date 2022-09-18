@@ -6,4 +6,12 @@ Matrix4D Transpose(const Matrix4D& matrix) {
   Transpose(matrix.as_array_, result.as_array_, 4, 4);
   return result;
 }
+
+Matrix4D operator*(const Matrix4D& mat, float scalar) {
+  Matrix4D result;
+  for (int i = 0; i < 16; ++i) {
+    result.as_array_[i] = mat.as_array_[i] * scalar;
+  }
+  return result;
+}
 }  // namespace math

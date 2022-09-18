@@ -23,6 +23,10 @@ typedef struct Matrix2D {
   }
 } Matrix2D;
 
+// transpose
 Matrix2D Transpose(const Matrix2D& matrix);
+
+// scalar multiplication
+Matrix2D operator*(const Matrix2D& mat, float scalar);
 }  // namespace math
 #endif  // _H_MATRIX_2D_

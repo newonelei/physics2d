@@ -23,7 +23,11 @@ typedef struct Matrix4D {
   }
 } Matrix4D;
 
+// transpose
 Matrix4D Transpose(const Matrix4D& matrix);
+
+// scalar multiplication
+Matrix4D operator*(const Matrix4D& mat, float scalar);
 }  // namespace math
 
 #endif  // _H_MATRIX_4D_

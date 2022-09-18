@@ -22,7 +22,11 @@ typedef struct Matrix3D {
   }
 } Matrix3D;
 
+// transpose
 Matrix3D Transpose(const Matrix3D& matrix);
+
+// scalar multiplication
+Matrix3D operator*(const Matrix3D& mat, float scalar);
 }  // namespace math
 
 #endif  // _H_MATRIX_3D_
