@@ -10,4 +10,25 @@ void Transpose(const float* srcMat, float* dstMat, int srcRows, int srcCols) {
                               // col]) is j([srcCols * col + row])
   }
 }
+
+bool Multiply(float* out, const float* mat_a, int a_rows, int a_cols,
+              const float* mat_b, int b_rows, int b_cols) {
+  if (a_cols != b_rows) {
+    return false;
+  }
+
+  for (int i = 0; i < a_rows; ++i) {
+    for (int j = 0; j < a_cols; ++j) {
+      int mat_out_idx = b_cols * i + j;
+      out[mat_out_idx] = 0.0f;
+      for (int k = 0; k < b_rows; ++k) {
+        int mat_a_index = a_cols * i + k;
+        int mat_b_index = b_cols * k + j;
+        out[mat_out_idx] += mat_a[mat_a_index] * mat_b[mat_b_index];
+      }
+    }
+  }
+
+  return true;
+}
 }  // namespace math

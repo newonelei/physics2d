@@ -14,4 +14,9 @@ Matrix3D operator*(const Matrix3D& mat, float scalar) {
   }
   return result;
 }
+Matrix3D operator*(const Matrix3D& mat_a, const Matrix3D& mat_b) {
+  Matrix3D result;
+  Multiply(result.as_array_, mat_a.as_array_, 3, 3, mat_b.as_array_, 3, 3);
+  return result;
+}
 }  // namespace math

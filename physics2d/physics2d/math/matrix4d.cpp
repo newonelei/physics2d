@@ -14,4 +14,10 @@ Matrix4D operator*(const Matrix4D& mat, float scalar) {
   }
   return result;
 }
+
+Matrix4D operator*(const Matrix4D& mat_a, const Matrix4D& mat_b) {
+  Matrix4D result;
+  Multiply(result.as_array_, mat_a.as_array_, 4, 4, mat_b.as_array_, 4, 4);
+  return result;
+}
 }  // namespace math

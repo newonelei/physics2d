@@ -28,5 +28,8 @@ Matrix2D Transpose(const Matrix2D& matrix);
 
 // scalar multiplication
 Matrix2D operator*(const Matrix2D& mat, float scalar);
+
+// matrix multiply
+Matrix2D operator*(const Matrix2D& mat_a, const Matrix2D& mat_b);
 }  // namespace math
 #endif  // _H_MATRIX_2D_

@@ -27,6 +27,10 @@ Matrix3D Transpose(const Matrix3D& matrix);
 
 // scalar multiplication
 Matrix3D operator*(const Matrix3D& mat, float scalar);
+
+// matrix multiply
+Matrix3D operator*(const Matrix3D& mat_a, const Matrix3D& mat_b);
+
 }  // namespace math
 
 #endif  // _H_MATRIX_3D_

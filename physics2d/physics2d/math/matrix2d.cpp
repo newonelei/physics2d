@@ -14,4 +14,10 @@ Matrix2D operator*(const Matrix2D& mat, float scalar) {
   }
   return result;
 }
+
+Matrix2D operator*(const Matrix2D& mat_a, const Matrix2D& mat_b) {
+  Matrix2D result;
+  Multiply(result.as_array_, mat_a.as_array_, 2, 2, mat_b.as_array_, 2, 2);
+  return result;
+}
 }  // namespace math

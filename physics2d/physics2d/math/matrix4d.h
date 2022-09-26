@@ -28,6 +28,9 @@ Matrix4D Transpose(const Matrix4D& matrix);
 
 // scalar multiplication
 Matrix4D operator*(const Matrix4D& mat, float scalar);
+
+// matrix multiply
+Matrix4D operator*(const Matrix4D& mat_a, const Matrix4D& mat_b);
 }  // namespace math
 
 #endif  // _H_MATRIX_4D_
