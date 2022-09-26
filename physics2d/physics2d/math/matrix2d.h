@@ -15,6 +15,15 @@ typedef struct Matrix2D {
     float as_array_[4];
   };
 
+  // default constructor for identity matrix
+  inline Matrix2D() {
+    _11 = _22 = 1.0f;
+    _12 = _21 = 0.0f;
+  }
+
+  inline Matrix2D(float f11, float f12, float f21, float f22)
+      : _11{f11}, _12{f12}, _21{f21}, _22{f22} {}
+
   // return row vector
   inline float* operator[](int i) {
     // max 2 rows
