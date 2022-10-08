@@ -25,6 +25,12 @@
     <Filter Include="Header Files\rigidbody">
       <UniqueIdentifier>{9bdf3f3d-e4d2-4955-bb55-aefbf66cde5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\math_utils">
+      <UniqueIdentifier>{1fb20e20-226a-462c-a549-1788eddc56eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\math_utils">
+      <UniqueIdentifier>{7c0f177b-c22d-4981-b900-0cac866ba0d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="physics2d.cpp">
@@ -47,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="math\matrix4d.cpp">
       <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="math_utils\matrices_utils.cpp">
+      <Filter>Source Files\math_utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="math\matrix4d.h">
       <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="math_utils\matrices_utils.h">
+      <Filter>Header Files\math_utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -40,6 +40,13 @@ typedef struct Matrix3D {
     assert(i >= 0 && i <= 2);
     return &as_array_[i * 3];
   }
+
+  // return row const vector
+  inline const float* operator[](int i) const {
+    // max 3 rows
+    assert(i >= 0 && i <= 2);
+    return &as_array_[i * 3];
+  }
 } Matrix3D;
 
 // transpose
@@ -51,6 +58,11 @@ Matrix3D operator*(const Matrix3D& mat, float scalar);
 // matrix multiply
 Matrix3D operator*(const Matrix3D& mat_a, const Matrix3D& mat_b);
 
+float Determinant(const Matrix3D& mat);
+
+Matrix3D Minor(const Matrix3D& mat);
+
+Matrix3D Cofactor(const Matrix3D& mat);
 }  // namespace math
 
 #endif  // _H_MATRIX_3D_

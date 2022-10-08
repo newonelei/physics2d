@@ -51,6 +51,13 @@ typedef struct Matrix4D {
     assert(i >= 0 && i <= 3);
     return &as_array_[i * 4];
   }
+
+  // return row const vector
+  inline const float* operator[](int i) const {
+    // max 4 rows
+    assert(i >= 0 && i <= 3);
+    return &as_array_[i * 4];
+  }
 } Matrix4D;
 
 // transpose
@@ -61,6 +68,10 @@ Matrix4D operator*(const Matrix4D& mat, float scalar);
 
 // matrix multiply
 Matrix4D operator*(const Matrix4D& mat_a, const Matrix4D& mat_b);
+
+float Determinant(const Matrix4D& mat);
+
+Matrix4D Minor(const Matrix4D& mat);
 }  // namespace math
 
 #endif  // _H_MATRIX_4D_

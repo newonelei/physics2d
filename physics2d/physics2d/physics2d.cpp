@@ -3,9 +3,22 @@
 
 #include <iostream>
 
+#include "math_utils/matrices_utils.h"
+using namespace math_utils;
+
 int main()
 {
     std::cout << "Hello World!\n";
+
+	math::Matrix2D mat2d(1.2f, 2.2f, 3.2f, 4.2f);
+	Matrix2D minor_2d = Minor(mat2d);
+	cout << ToString<Matrix2D, 2, 2>(minor_2d);
+	operator<<<Matrix2D, 2, 2>(cout, minor_2d);
+	//std::cout << minor_2d << endl;
+
+	math::Matrix3D mat3d(1.2f, 2.2f, 3.2f, 4.2f, 1.2f, 2.2f, 3.2f, 4.2f, 5.2f);
+	//std::cout << Minor(mat3d) << endl;
+	operator<<<Matrix3D, 3, 3>(cout, Minor(mat3d));
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -20,4 +20,14 @@ Matrix4D operator*(const Matrix4D& mat_a, const Matrix4D& mat_b) {
   Multiply(result.as_array_, mat_a.as_array_, 4, 4, mat_b.as_array_, 4, 4);
   return result;
 }
+
+float Determinant(const Matrix4D& mat)
+{
+	return 0.0f;
+}
+
+Matrix4D Minor(const Matrix4D& mat)
+{
+	return Matrix4D();
+}
 }  // namespace math

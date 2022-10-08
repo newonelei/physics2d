@@ -20,4 +20,19 @@ Matrix2D operator*(const Matrix2D& mat_a, const Matrix2D& mat_b) {
   Multiply(result.as_array_, mat_a.as_array_, 2, 2, mat_b.as_array_, 2, 2);
   return result;
 }
+
+float Determinant(const Matrix2D& mat) {
+  return mat._11 * mat._22 - mat._12 * mat._21;
+}
+
+Matrix2D Minor(const Matrix2D& mat) {
+  return Matrix2D(mat._22, mat._21, mat._12, mat._11);
+}
+
+Matrix2D Cofactor(const Matrix2D& mat) {
+  Matrix2D result;
+  Cofactor(result.as_array_, Minor(mat).as_array_, 2, 2);
+  return result;
+}
+
 }  // namespace math

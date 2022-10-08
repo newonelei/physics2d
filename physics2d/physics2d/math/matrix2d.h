@@ -30,6 +30,13 @@ typedef struct Matrix2D {
     assert(i >= 0 && i <= 1);
     return &as_array_[i * 2];
   }
+
+  // return row const vector
+  inline const float* operator[](int i) const{
+    // max 2 rows
+    assert(i >= 0 && i <= 1);
+    return &as_array_[i * 2];
+  }
 } Matrix2D;
 
 // transpose
@@ -40,5 +47,11 @@ Matrix2D operator*(const Matrix2D& mat, float scalar);
 
 // matrix multiply
 Matrix2D operator*(const Matrix2D& mat_a, const Matrix2D& mat_b);
+
+float Determinant(const Matrix2D& mat);
+
+Matrix2D Minor(const Matrix2D& mat);
+
+Matrix2D Cofactor(const Matrix2D& mat);
 }  // namespace math
 #endif  // _H_MATRIX_2D_
