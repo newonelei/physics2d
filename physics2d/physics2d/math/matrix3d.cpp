@@ -26,12 +26,15 @@ float Determinant(const Matrix3D& mat) {
   Matrix3D cofactor = Cofactor(mat);
   for (int j = 0; j < 3; ++j) {
     int index = j;
+
+	// fetch the first 3 elements in mat.as_array_
     result += mat.as_array_[index] * cofactor[0][j];
   }
 
   return result;
 }
 
+// get matrix of minors
 Matrix3D Minor(const Matrix3D& mat) {
   Matrix3D result;
 
@@ -43,6 +46,7 @@ Matrix3D Minor(const Matrix3D& mat) {
   return result;
 }
 
+// get matrix of cofactors
 Matrix3D Cofactor(const Matrix3D& mat) {
   Matrix3D result;
   Cofactor(result.as_array_, Minor(mat).as_array_, 3, 3);

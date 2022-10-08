@@ -50,8 +50,10 @@ Matrix2D operator*(const Matrix2D& mat_a, const Matrix2D& mat_b);
 
 float Determinant(const Matrix2D& mat);
 
+// get matrix of minors
 Matrix2D Minor(const Matrix2D& mat);
 
+// get matrix of cofactors
 Matrix2D Cofactor(const Matrix2D& mat);
 }  // namespace math
 #endif  // _H_MATRIX_2D_

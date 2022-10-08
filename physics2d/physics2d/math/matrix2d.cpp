@@ -25,10 +25,12 @@ float Determinant(const Matrix2D& mat) {
   return mat._11 * mat._22 - mat._12 * mat._21;
 }
 
+// get matrix of minors
 Matrix2D Minor(const Matrix2D& mat) {
   return Matrix2D(mat._22, mat._21, mat._12, mat._11);
 }
 
+// get matrix of cofactors
 Matrix2D Cofactor(const Matrix2D& mat) {
   Matrix2D result;
   Cofactor(result.as_array_, Minor(mat).as_array_, 2, 2);

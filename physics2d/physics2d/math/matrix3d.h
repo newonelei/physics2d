@@ -60,8 +60,10 @@ Matrix3D operator*(const Matrix3D& mat_a, const Matrix3D& mat_b);
 
 float Determinant(const Matrix3D& mat);
 
+// get matrix of minors
 Matrix3D Minor(const Matrix3D& mat);
 
+// get matrix of cofactors
 Matrix3D Cofactor(const Matrix3D& mat);
 }  // namespace math
 
