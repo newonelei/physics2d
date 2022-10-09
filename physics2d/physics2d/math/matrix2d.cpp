@@ -44,11 +44,24 @@ Matrix2D Adjugate(const Matrix2D& mat) { return Transpose(Cofactor(mat)); }
 
 // inverse of matrix
 Matrix2D Inverse(const Matrix2D& mat) {
-  float det = Determinant(mat);
+  /*
+float det = Determinant(mat);
+if (CMP(det, 0.0f)) {
+return Matrix2D();
+}
+
+return Adjugate(mat) * (1.0f / det);
+*/
+  float det = mat._11 * mat._22 - mat._12 * mat._21;
   if (CMP(det, 0.0f)) {
     return Matrix2D();
   }
-
-  return Adjugate(mat) * (1.0f / det);
+  float i_det = 1.0f / det;
+  Matrix2D result;
+  result._11 = mat._22 * i_det;
+  result._12 = -mat._12 * i_det;
+  result._21 = -mat._21 * i_det;
+  result._22 = mat._11 * i_det;
+  return result;
 }
 }  // namespace math
