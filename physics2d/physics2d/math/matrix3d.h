@@ -65,6 +65,12 @@ Matrix3D Minor(const Matrix3D& mat);
 
 // get matrix of cofactors
 Matrix3D Cofactor(const Matrix3D& mat);
+
+// get adjugate matrix
+Matrix3D Adjugate(const Matrix3D& mat);
+
+// inverse of matrix
+Matrix3D Inverse(const Matrix3D& mat);
 }  // namespace math
 
 #endif  // _H_MATRIX_3D_

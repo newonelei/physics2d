@@ -1,5 +1,6 @@
 #include "matrix3d.h"
 #include "matrices.h"
+#include "float_utils.h"
 namespace math {
 Matrix3D Transpose(const Matrix3D& matrix) {
   Matrix3D result;
@@ -21,13 +22,13 @@ Matrix3D operator*(const Matrix3D& mat_a, const Matrix3D& mat_b) {
 }
 
 float Determinant(const Matrix3D& mat) {
-  float result;
+  float result = 0.0f;
 
   Matrix3D cofactor = Cofactor(mat);
   for (int j = 0; j < 3; ++j) {
     int index = j;
 
-	// fetch the first 3 elements in mat.as_array_
+    // fetch the first 3 elements in mat.as_array_
     result += mat.as_array_[index] * cofactor[0][j];
   }
 
@@ -51,5 +52,18 @@ Matrix3D Cofactor(const Matrix3D& mat) {
   Matrix3D result;
   Cofactor(result.as_array_, Minor(mat).as_array_, 3, 3);
   return result;
+}
+
+// adjugate of any order matrix is the transpose of cofactor matrix
+Matrix3D Adjugate(const Matrix3D& mat) { return Transpose(Cofactor(mat)); }
+
+// inverse of matrix
+Matrix3D Inverse(const Matrix3D& mat) {
+  float det = Determinant(mat);
+  if (CMP(det, 0.0f)) {
+    return Matrix3D();
+  }
+
+  return Adjugate(mat) * (1.0f / det);
 }
 }  // namespace math

@@ -55,5 +55,11 @@ Matrix2D Minor(const Matrix2D& mat);
 
 // get matrix of cofactors
 Matrix2D Cofactor(const Matrix2D& mat);
+
+// get adjugate matrix
+Matrix2D Adjugate(const Matrix2D& mat);
+
+// inverse of matrix
+Matrix2D Inverse(const Matrix2D& mat);
 }  // namespace math
 #endif  // _H_MATRIX_2D_

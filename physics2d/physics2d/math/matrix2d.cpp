@@ -1,5 +1,7 @@
 #include "matrix2d.h"
+#include "float_utils.h"
 #include "matrices.h"
+
 namespace math {
 Matrix2D Transpose(const Matrix2D& matrix) {
   Matrix2D result;
@@ -37,4 +39,16 @@ Matrix2D Cofactor(const Matrix2D& mat) {
   return result;
 }
 
+// adjugate of any order matrix is the transpose of cofactor matrix
+Matrix2D Adjugate(const Matrix2D& mat) { return Transpose(Cofactor(mat)); }
+
+// inverse of matrix
+Matrix2D Inverse(const Matrix2D& mat) {
+  float det = Determinant(mat);
+  if (CMP(det, 0.0f)) {
+    return Matrix2D();
+  }
+
+  return Adjugate(mat) * (1.0f / det);
+}
 }  // namespace math

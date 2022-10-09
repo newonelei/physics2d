@@ -71,7 +71,17 @@ Matrix4D operator*(const Matrix4D& mat_a, const Matrix4D& mat_b);
 
 float Determinant(const Matrix4D& mat);
 
+// get matrix of minors
 Matrix4D Minor(const Matrix4D& mat);
+
+// get matrix of cofactors
+Matrix4D Cofactor(const Matrix4D& mat);
+
+// get adjugate matrix
+Matrix4D Adjugate(const Matrix4D& mat);
+
+// inverse of matrix
+Matrix4D Inverse(const Matrix4D& mat);
 }  // namespace math
 
 #endif  // _H_MATRIX_4D_
