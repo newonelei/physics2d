@@ -48,4 +48,29 @@ void Cofactor(float* out, const float* minor, int rows, int cols) {
     }
   }
 }
+
+Matrix4D Translation(float x, float y, float z)
+{
+	return Matrix4D(
+		1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f, 0.0f,
+		x, y, z, 0.0f
+	);
+}
+
+Matrix4D Translation(const Vector3D& pos)
+{
+	return Matrix4D(
+		1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f, 0.0f,
+		pos.x_, pos.y_, pos.z_, 0.0f
+	);
+}
+
+Vector3D GetTranslation(const Matrix4D& mat)
+{
+	return Vector3D(mat._41, mat._42, mat._43);
+}
 }  // namespace math

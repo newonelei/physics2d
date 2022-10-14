@@ -4,6 +4,8 @@
 #include "matrix3d.h"
 #include "matrix4d.h"
 
+#include "vector3d.h"
+
 namespace math {
 void Transpose(const float* srcMat, float* dstMat, int srcRows, int srcCols);
 
@@ -29,4 +31,8 @@ MatCutT Cut(const MatSrcT& mat, int row, int col) {
 }
 
 void Cofactor(float* out, const float* minor, int rows, int cols);
+
+Matrix4D Translation(float x, float y, float z);
+Matrix4D Translation(const Vector3D& pos);
+Vector3D GetTranslation(const Matrix4D& mat);
 }  // namespace math
