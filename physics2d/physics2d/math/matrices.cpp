@@ -73,4 +73,27 @@ Vector3D GetTranslation(const Matrix4D& mat)
 {
 	return Vector3D(mat._41, mat._42, mat._43);
 }
+
+Matrix4D Scale(float x, float y, float z)
+{
+	return Matrix4D(
+		   x, 0.0f, 0.0f, 0.0f,
+		0.0f,    y, 0.0f, 0.0f,
+		0.0f, 0.0f,    z, 0.0f,
+		0.0f, 0.0f, 0.0f, 0.0f);
+}
+
+Matrix4D Scale(const Vector3D& vec)
+{
+	return Matrix4D(
+		vec.x_, 0.0f, 0.0f, 0.0f,
+		0.0f, vec.y_, 0.0f, 0.0f,
+		0.0f, 0.0f, vec.z_, 0.0f,
+		0.0f, 0.0f, 0.0f, 0.0f);
+}
+
+Vector3D GetScale(const Matrix4D& mat)
+{
+    return Vector3D(mat._11, mat._22, mat._33);
+}
 }  // namespace math

@@ -32,7 +32,13 @@ MatCutT Cut(const MatSrcT& mat, int row, int col) {
 
 void Cofactor(float* out, const float* minor, int rows, int cols);
 
+// translation
 Matrix4D Translation(float x, float y, float z);
 Matrix4D Translation(const Vector3D& pos);
 Vector3D GetTranslation(const Matrix4D& mat);
+
+// scale matrix operations
+Matrix4D Scale(float x, float y, float z);
+Matrix4D Scale(const Vector3D& vec);
+Vector3D GetScale(const Matrix4D& mat);
 }  // namespace math
