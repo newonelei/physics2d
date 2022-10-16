@@ -172,4 +172,55 @@ Matrix3D Rotation3x3(float pitch, float yaw, float roll)
 {
     return ZRotation3x3(roll) * XRotation3x3(pitch) * YRotation3x3(yaw);
 }
+
+Matrix4D AxisAngle(const Vector3D& axis, float angle)
+{
+    angle = DEG2RAD(angle);
+    float c = cosf(angle);
+    float s = sinf(angle);
+    float t = 1.0f - cosf(angle);
+
+    float x = axis.x_;
+    float y = axis.y_;
+    float z = axis.z_;
+    if(!CMP(math::MagnitudeSq(axis), 1.0f))
+    {
+        float inv_len = 1.0f / math::Magnitude(axis);
+        x *= inv_len;
+        y *= inv_len;
+        z *= inv_len;
+    }// x, y, and z are a normalized vector
+
+    return Matrix4D
+    (
+        t * (x * x) + c, t * x * y + s * z, t * x * z - s * y, 0.0f,
+        t * x * y - s * z, t * (y * y) + c, t * y * z + s * x, 0.0f,
+        t * x * z + s * y, t * y * z - s * x, t * (z * z) + c, 0.0f,
+        0.0f, 0.0f, 0.0f, 1.0f
+    );
+}
+
+Matrix3D AxisAngle3x3(const Vector3D& axis, float angle)
+{
+  angle = DEG2RAD(angle);
+  float c = cosf(angle);
+  float s = sinf(angle);
+  float t = 1.0f - cosf(angle);
+
+  float x = axis.x_;
+  float y = axis.y_;
+  float z = axis.z_;
+  if (!CMP(math::MagnitudeSq(axis), 1.0f)) {
+    float inv_len = 1.0f / math::Magnitude(axis);
+    x *= inv_len;
+    y *= inv_len;
+    z *= inv_len;
+  }  // x, y, and z are a normalized vector
+
+  return Matrix3D(
+      t * (x * x) + c, t * x * y + s * z, t * x * z - s * y,
+      t * x * y - s * z, t * (y * y) + c, t * y * z + s * x,
+      t * x * z + s * y, t * y * z - s * x, t * (z * z) + c
+  );
+}
 }  // namespace math

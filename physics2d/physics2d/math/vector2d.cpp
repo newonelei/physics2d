@@ -6,13 +6,13 @@ Vector2D Vector2D::Zero = Vector2D();
 
 Vector2D::Vector2D(void) : x_(0.0f), y_(0.0f) {}
 
-inline Vector2D::Vector2D(float xi, float yi) : x_(xi), y_(yi) {}
+Vector2D::Vector2D(float xi, float yi) : x_(xi), y_(yi) {}
 
-inline float Vector2D::Magnitude(void) const {
+float Vector2D::Magnitude(void) const {
   return sqrtf(Dot(*this, *this));
 }
 
-inline void Vector2D::Normalize(void) {
+void Vector2D::Normalize(void) {
   constexpr float tol = 0.00001f;
   float m = Magnitude();
   if (m < tol) {
@@ -35,74 +35,74 @@ Vector2D Vector2D::Normalized(void) const {
   return vec;
 }
 
-inline void Vector2D::Reverse(void) {
+void Vector2D::Reverse(void) {
   x_ = -x_;
   y_ = -y_;
 }
 
-inline Vector2D& Vector2D::operator+=(const Vector2D& u) {
+Vector2D& Vector2D::operator+=(const Vector2D& u) {
   x_ += u.x_;
   y_ += u.y_;
   return *this;
 }
 
-inline Vector2D& Vector2D::operator-=(const Vector2D& u) {
+Vector2D& Vector2D::operator-=(const Vector2D& u) {
   x_ -= u.x_;
   y_ -= u.y_;
   return *this;
 }
 
-inline Vector2D& Vector2D::operator*=(const Vector2D& u) {
+Vector2D& Vector2D::operator*=(const Vector2D& u) {
   x_ *= u.x_;
   y_ *= u.y_;
   return *this;
 }
 
-inline Vector2D& Vector2D::operator/=(const Vector2D& u) {
+Vector2D& Vector2D::operator/=(const Vector2D& u) {
   x_ /= u.x_;
   y_ /= u.y_;
   return *this;
 }
 
-inline Vector2D Vector2D::operator-(void) { return Vector2D(-x_, -y_); }
+Vector2D Vector2D::operator-(void) { return Vector2D(-x_, -y_); }
 
-inline Vector2D operator+(const Vector2D& u, const Vector2D& v) {
+Vector2D operator+(const Vector2D& u, const Vector2D& v) {
   return Vector2D(u.x_ + v.x_, u.y_ + v.y_);
 }
 
-inline Vector2D operator-(const Vector2D& u, const Vector2D& v) {
+Vector2D operator-(const Vector2D& u, const Vector2D& v) {
   return Vector2D(u.x_ - v.x_, u.y_ - v.y_);
 }
 
 /*
  * vector cross product
  */
-inline float operator^(const Vector2D& u, const Vector2D& v) {
+float operator^(const Vector2D& u, const Vector2D& v) {
   return static_cast<float>(u.x_ * v.y_ - u.y_ * v.x_);
 }
 
 // dot product
-inline float operator*(const Vector2D& u, const Vector2D& v) {
+float operator*(const Vector2D& u, const Vector2D& v) {
   return static_cast<float>(u.x_ * v.x_ + u.y_ * v.y_);
 }
 
-inline float Dot(const Vector2D& u, const Vector2D& v) { return u * v; }
+float Dot(const Vector2D& u, const Vector2D& v) { return u * v; }
 
 /*
  * scalar multiplication
  */
-inline Vector2D operator*(float s, const Vector2D& u) {
+Vector2D operator*(float s, const Vector2D& u) {
   return Vector2D(s * u.x_, s * u.y_);
 }
 
-inline Vector2D operator*(const Vector2D& u, float s) {
+Vector2D operator*(const Vector2D& u, float s) {
   return Vector2D(s * u.x_, s * u.y_);
 }
 
 /*
  * scalar devision
  */
-inline Vector2D operator/(const Vector2D& u, float s) {
+Vector2D operator/(const Vector2D& u, float s) {
   return Vector2D(u.x_ / s, u.y_ / s);
 }
 
@@ -117,24 +117,24 @@ float MagnitudeSq(const Vector2D& v) { return v * v; }
 
 Vector2D Normalized(const Vector2D& v) { return v.Normalized(); }
 
-inline float Angle(const Vector2D& u, const Vector2D& v) {
+float Angle(const Vector2D& u, const Vector2D& v) {
   float m = sqrtf(MagnitudeSq(u) * MagnitudeSq(v));
   return acos(Dot(u, v) / m);
 }
 
-inline Vector2D Project(const Vector2D& len, const Vector2D& dir) {
+Vector2D Project(const Vector2D& len, const Vector2D& dir) {
   // Proj = Dot(a, b) * b / (||B|| * ||B||)
   float dot = Dot(len, dir);
   float magSq = MagnitudeSq(dir);
   return dir * (dot / magSq);
 }
 
-inline Vector2D Perpendicular(const Vector2D& len,
+Vector2D Perpendicular(const Vector2D& len,
                               const Vector2D& dir) {
   return len - Project(len, dir);
 }
 
-inline Vector2D Reflection(const Vector2D& v, const Vector2D& normal)
+Vector2D Reflection(const Vector2D& v, const Vector2D& normal)
 {
 	float d = Dot(v, normal);
 	return v - 2.0f * d * normal;
@@ -144,7 +144,7 @@ inline Vector2D Reflection(const Vector2D& v, const Vector2D& normal)
  * triple scalar product
  * s = u dot (v cross w)
  */
-inline Vector2D TripleScalarProduct(const Vector2D& u, const Vector2D& v,
+Vector2D TripleScalarProduct(const Vector2D& u, const Vector2D& v,
                                     const Vector2D& w) {
   return u * (v ^ w);
 }
