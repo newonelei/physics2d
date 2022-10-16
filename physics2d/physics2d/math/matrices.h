@@ -41,4 +41,14 @@ Vector3D GetTranslation(const Matrix4D& mat);
 Matrix4D Scale(float x, float y, float z);
 Matrix4D Scale(const Vector3D& vec);
 Vector3D GetScale(const Matrix4D& mat);
+
+// rotation operators
+Matrix4D ZRotation(float angle);
+Matrix3D ZRotation3x3(float angle);
+Matrix4D XRotation(float angle);
+Matrix3D XRotation3x3(float angle);
+Matrix4D YRotation(float angle);
+Matrix3D YRotation3x3(float angle);
+Matrix4D Rotation(float pitch, float yaw, float roll);
+Matrix3D Rotation3x3(float pitch, float yaw, float roll);
 }  // namespace math

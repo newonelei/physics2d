@@ -1,4 +1,5 @@
 #include "matrices.h"
+#include "float_utils.h"
 #include <cmath>
 
 namespace math {
@@ -95,5 +96,80 @@ Matrix4D Scale(const Vector3D& vec)
 Vector3D GetScale(const Matrix4D& mat)
 {
     return Vector3D(mat._11, mat._22, mat._33);
+}
+
+Matrix4D ZRotation(float angle)
+{
+    angle = DEG2RAD(angle);
+    return Matrix4D(
+        cosf(angle),  sinf(angle), 0.0f, 0.0f,
+        -sinf(angle), cosf(angle), 0.0f, 0.0f,
+        0.0f,         0.0f,        1.0f, 0.0f,
+        0.0f,         0.0f,        0.0f, 1.0f
+    );
+}
+
+Matrix3D ZRotation3x3(float angle)
+{
+    angle = DEG2RAD(angle);
+    return Matrix3D(
+        cosf(angle),  sinf(angle), 0.0f,
+        -sinf(angle), cosf(angle), 0.0f,
+        0.0f,         0.0f,        1.0f
+    );
+}
+
+Matrix4D XRotation(float angle)
+{
+    angle = DEG2RAD(angle);
+    return Matrix4D(
+        1.0f, 0.0f,         0.0f,        0.0f,
+        0.0f,  cosf(angle), sinf(angle), 0.0f,
+        0.0f, -sinf(angle), cosf(angle), 0.0f,
+        0.0f, 0.0f,         0.0f,        1.0f
+    );
+
+}
+
+Matrix3D XRotation3x3(float angle)
+{
+    angle = DEG2RAD(angle);
+    return Matrix3D(
+        1.0f,  0.0f,        0.0f,
+        0.0f,  cosf(angle), sinf(angle),
+        0.0f, -sinf(angle), cosf(angle)
+    );
+}
+
+Matrix4D YRotation(float angle)
+{
+    angle = DEG2RAD(angle);
+    return Matrix4D(
+        cosf(angle), 0.0f, -sinf(angle), 0.0f,
+        0.0f,        1.0f, 0.0f,         0.0f,
+        sinf(angle), 0.0f, cosf(angle),  0.0f,
+        0.0f,        0.0f, 0.0f,         1.0f
+    );
+}
+
+Matrix3D YRotation3x3(float angle)
+{
+    angle = DEG2RAD(angle);
+    return Matrix3D(
+        cosf(angle), 0.0f, -sinf(angle),
+        0.0f,        1.0f, 0.0f,
+        sinf(angle), 0.0f, cosf(angle)
+    );
+}
+
+
+Matrix4D Rotation(float pitch, float yaw, float roll)
+{
+    return ZRotation(roll) * XRotation(pitch) * YRotation(yaw);
+}
+
+Matrix3D Rotation3x3(float pitch, float yaw, float roll)
+{
+    return ZRotation3x3(roll) * XRotation3x3(pitch) * YRotation3x3(yaw);
 }
 }  // namespace math
