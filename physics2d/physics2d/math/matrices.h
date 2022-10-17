@@ -55,4 +55,9 @@ Matrix3D Rotation3x3(float pitch, float yaw, float roll);
 // Axis angle rotation
 Matrix4D AxisAngle(const Vector3D& axis, float angle);
 Matrix3D AxisAngle3x3(const Vector3D& axis, float angle);
+
+// vector multiply matrix
+Vector3D MultiplyPoint(const Vector3D& vec, const Matrix4D& mat);
+Vector3D MultiplyVector(const Vector3D& vec, const Matrix4D& mat);
+Vector3D MultiplyPoint(const Vector3D& vec, const Matrix3D& mat);
 }  // namespace math
