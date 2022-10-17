@@ -60,4 +60,8 @@ Matrix3D AxisAngle3x3(const Vector3D& axis, float angle);
 Vector3D MultiplyPoint(const Vector3D& vec, const Matrix4D& mat);
 Vector3D MultiplyVector(const Vector3D& vec, const Matrix4D& mat);
 Vector3D MultiplyPoint(const Vector3D& vec, const Matrix3D& mat);
+
+// Transform operator : scale -> rotate -> translate
+Matrix4D Transform(const Vector3D& scale, const Vector3D& eulerRotation, const Vector3D& translate);
+Matrix4D Transform(const Vector3D& scale, const Vector3D& rotationAxis, float rotationAngle, const Vector3D& translate);
 }  // namespace math

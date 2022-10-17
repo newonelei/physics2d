@@ -253,4 +253,17 @@ Vector3D MultiplyPoint(const Vector3D& vec, const Matrix3D& mat)
     return result;
 }
 
+Matrix4D Transform(const Vector3D& scale, const Vector3D& eulerRotation, const Vector3D& translate)
+{
+    return Scale(scale) 
+        * Rotation(eulerRotation.x_, eulerRotation.y_, eulerRotation.z_) 
+        * Translation(translate);
+}
+
+Matrix4D Transform(const Vector3D& scale, const Vector3D& rotationAxis, float rotationAngle, const Vector3D& translate)
+{
+    return Scale(scale)
+        * AxisAngle(rotationAxis, rotationAngle)
+        * Translation(translate);
+}
 }  // namespace math
