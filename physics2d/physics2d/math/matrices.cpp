@@ -223,4 +223,34 @@ Matrix3D AxisAngle3x3(const Vector3D& axis, float angle)
       t * x * z + s * y, t * y * z - s * x, t * (z * z) + c
   );
 }
+
+// for the point version, hardcoded the last W component with 1.0f
+Vector3D MultiplyPoint(const Vector3D& vec, const Matrix4D& mat)
+{
+    Vector3D result;
+    result.x_ = vec.x_ * mat._11 + vec.y_ * mat._21 + vec.z_ * mat._31 + 1.0f * mat._41;
+    result.y_ = vec.x_ * mat._12 + vec.y_ * mat._22 + vec.z_ * mat._32 + 1.0f * mat._42;
+    result.x_ = vec.x_ * mat._13 + vec.y_ * mat._23 + vec.z_ * mat._33 + 1.0f * mat._43;
+    return result;
+}
+
+// for the vector, hardcoded the last W component as 0.0f
+Vector3D MultiplyVector(const Vector3D& vec, const Matrix4D& mat)
+{
+    Vector3D result;
+    result.x_ = vec.x_ * mat._11 + vec.y_ * mat._21 + vec.z_ * mat._31;
+    result.y_ = vec.x_ * mat._12 + vec.y_ * mat._22 + vec.z_ * mat._32;
+    result.x_ = vec.x_ * mat._13 + vec.y_ * mat._23 + vec.z_ * mat._33;
+    return result;
+}
+
+Vector3D MultiplyPoint(const Vector3D& vec, const Matrix3D& mat)
+{
+    Vector3D result;
+    result.x_ = Dot(vec, Vector3D(mat._11, mat._21, mat._31));
+    result.y_ = Dot(vec, Vector3D(mat._12, mat._22, mat._32));
+    result.z_ = Dot(vec, Vector3D(mat._13, mat._23, mat._33));
+    return result;
+}
+
 }  // namespace math
