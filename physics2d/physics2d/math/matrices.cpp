@@ -266,4 +266,72 @@ Matrix4D Transform(const Vector3D& scale, const Vector3D& rotationAxis, float ro
         * AxisAngle(rotationAxis, rotationAngle)
         * Translation(translate);
 }
+
+// generate a view transform matrix that transform world space object to camera view space
+Matrix4D LookAt(const Vector3D& position, const Vector3D& target, const Vector3D& up)
+{
+    // we need to get rotation of the matrix and position of camera
+    Vector3D forward = Normalized(target - position);
+
+    // COMMENT: up is the normally(often) world space up axis, this up vector is the random
+    // vector that is on the same plane
+    // of forward vector and camera's real up vector.
+    // We use this up vector to calculate right vector, then use right and
+    // forward vector to get real camera up vector
+    Vector3D right = Normalized(Cross(up, forward)); // we are using lefthanded coordinate
+    
+    // this the real camera up vector
+    Vector3D newUp = Cross(forward, right);
+
+    /* 
+    view matrix = rotMat * transMat = Matrix4D(
+        right.x_, right.y_, right.z_, 0.0f,
+        newUp.x_, newUp.y_, newUp.z_, 0.0f,
+        forwards.x_, forward.y_, forward.z_, 0.0f,
+        0.0f,     0.0f,     0.0f,     1.0f
+    ) * Matrix4D(
+        1.0f,     0.0f,     0.0f,     0.0f,
+        0.0f,     1.0f,     0.0f,     0.0f,
+        0.0f,     0.0f,     1.0f,     0.0f,
+        position.x_, position.y_, position.z_, 1.0f
+    ) = Matrix4D(
+        right.x_, right.y_, right.z_, 0.0f,
+        newUp.x_, newUp.y_, newUp.z_, 0.0f,
+        forwards.x_, forward.y_, forward.z_, 0.0f,
+        position.x_, position.y_, position.z_, 1.0f
+    });
+
+    1. The inverse of a translation matrix is the translation matrix with the opposite signs on 
+       each of the translation components. 
+    2. The inverse of a rotation matrix is the rotation matrix's transpose.
+    3. The inverse of a matrix product is the product of the inverse matrices ordered in reverse.
+
+    inverted view matrix = invertTransMat * invertRotMat = Matrix4D(
+        1.0f,         0.0f,         0.0f,         0.0f,
+        0.0f,         1.0f,         0.0f,         0.0f,
+        0.0f,         0.0f,         1.0f,         0.0f,
+        -position.x_, -position.y_, -position.z_, 1.0f
+    ) * Matrix4D(
+        right.x_, newUp.x_, right.x_, 0.0f,
+        right.y_, newUp.y_, right.y_, 0.0f,
+        right.z_, newUp.z_, right.z_, 0.0f,
+        0.0f,     0.0f,     0.0f,     1.0f
+    ) = Matrix4d(
+        right.x_, newUp.x_, right.x_, 0.0f,
+        right.y_, newUp.y_, right.y_, 0.0f,
+        right.z_, newUp.z_, right.z_, 0.0f,
+        -position.x_ * right.x_ + -position.y_ * right.y_ + -position.z_ * right.z_, 
+        -position.x_ * newUp.x_ + -position.y_ * newUp.y_ + -position.z_ * newUp.z_, 
+        -position.x_ * right.x_ + -position.y_ * right.y_ + -position.z_ * right.z_, 
+        , 1.0f
+    )
+    */
+    return Matrix4D( // transpose rotation
+        right.x_, newUp.x_, forward.x_, 0.0f,
+        right.y_, newUp.y_, forward.y_, 0.0f,
+        right.z_, newUp.z_, forward.z_, 0.0f,
+        -Dot(right, position),
+        -Dot(newUp, position),
+        -Dot(forward, position), 1.0f
+    );
 }  // namespace math

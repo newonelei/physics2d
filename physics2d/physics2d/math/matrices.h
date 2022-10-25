@@ -64,4 +64,6 @@ Vector3D MultiplyPoint(const Vector3D& vec, const Matrix3D& mat);
 // Transform operator : scale -> rotate -> translate
 Matrix4D Transform(const Vector3D& scale, const Vector3D& eulerRotation, const Vector3D& translate);
 Matrix4D Transform(const Vector3D& scale, const Vector3D& rotationAxis, float rotationAngle, const Vector3D& translate);
+
+Matrix4D LookAt(const Vector3D& position, const Vector3D& target, const Vector3D& up);
 }  // namespace math
