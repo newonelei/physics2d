@@ -66,4 +66,10 @@ Matrix4D Transform(const Vector3D& scale, const Vector3D& eulerRotation, const V
 Matrix4D Transform(const Vector3D& scale, const Vector3D& rotationAxis, float rotationAngle, const Vector3D& translate);
 
 Matrix4D LookAt(const Vector3D& position, const Vector3D& target, const Vector3D& up);
+
+// projection
+Matrix4D Projection(float fov, float aspect, float zNear, float zFar);
+
+// ortho
+Matrix4D Ortho(float left, float right, float bottom, float top, float zNear, float zFar);
 }  // namespace math

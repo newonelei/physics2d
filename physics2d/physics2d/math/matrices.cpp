@@ -279,11 +279,11 @@ Matrix4D LookAt(const Vector3D& position, const Vector3D& target, const Vector3D
     // We use this up vector to calculate right vector, then use right and
     // forward vector to get real camera up vector
     Vector3D right = Normalized(Cross(up, forward)); // we are using lefthanded coordinate
-    
+
     // this the real camera up vector
     Vector3D newUp = Cross(forward, right);
 
-    /* 
+    /*
     view matrix = rotMat * transMat = Matrix4D(
         right.x_, right.y_, right.z_, 0.0f,
         newUp.x_, newUp.y_, newUp.z_, 0.0f,
@@ -301,8 +301,8 @@ Matrix4D LookAt(const Vector3D& position, const Vector3D& target, const Vector3D
         position.x_, position.y_, position.z_, 1.0f
     });
 
-    1. The inverse of a translation matrix is the translation matrix with the opposite signs on 
-       each of the translation components. 
+    1. The inverse of a translation matrix is the translation matrix with the opposite signs on
+       each of the translation components.
     2. The inverse of a rotation matrix is the rotation matrix's transpose.
     3. The inverse of a matrix product is the product of the inverse matrices ordered in reverse.
 
@@ -320,9 +320,9 @@ Matrix4D LookAt(const Vector3D& position, const Vector3D& target, const Vector3D
         right.x_, newUp.x_, right.x_, 0.0f,
         right.y_, newUp.y_, right.y_, 0.0f,
         right.z_, newUp.z_, right.z_, 0.0f,
-        -position.x_ * right.x_ + -position.y_ * right.y_ + -position.z_ * right.z_, 
-        -position.x_ * newUp.x_ + -position.y_ * newUp.y_ + -position.z_ * newUp.z_, 
-        -position.x_ * right.x_ + -position.y_ * right.y_ + -position.z_ * right.z_, 
+        -position.x_ * right.x_ + -position.y_ * right.y_ + -position.z_ * right.z_,
+        -position.x_ * newUp.x_ + -position.y_ * newUp.y_ + -position.z_ * newUp.z_,
+        -position.x_ * right.x_ + -position.y_ * right.y_ + -position.z_ * right.z_,
         , 1.0f
     )
     */
@@ -334,4 +334,38 @@ Matrix4D LookAt(const Vector3D& position, const Vector3D& target, const Vector3D
         -Dot(newUp, position),
         -Dot(forward, position), 1.0f
     );
+}
+
+Matrix4D Projection(float fov, float aspect, float zNear, float zFar)
+{
+    float tanHalfFov = tanf(DEG2RAD(fov * 0.5f));
+    float fovY = 1.0f / tanHalfFov; // ctan(fov/2)
+    float fovX = fovY / aspect; // ctan(fov/2) / aspect
+
+    Matrix4D result;
+    result._11 = fovX;
+    result._22 = fovY;
+    /// _33 = far / range
+    result._33 = zFar / (zFar - zNear);
+    result._34 = 1.0f;
+    // _43 = - near * (far / range)
+    result._43 = -zNear * result._33;
+    result._44 = 0.0f;
+    
+    return result;
+}
+
+Matrix4D Ortho(float left, float right, float bottom, float top, float zNear, float zFar)
+{
+    Matrix4D result;
+
+    result._11 = 2.0f / (right - left);
+    result._22 = 2.0f / (top - bottom);
+    result._33 = 1.0f / (zFar - zNear);
+    result._41 = (left + right) / (left - right);
+    result._42 = (top + bottom) / (bottom - top);
+    result._43 = zNear / (zNear - zFar);
+
+    return result;
+}
 }  // namespace math
