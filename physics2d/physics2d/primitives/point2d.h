@@ -3,9 +3,9 @@
 #ifndef _H_2D_POINT2D_
 #define _H_2D_POINT2D_
 
-#include "vector2d.h"
+#include "math/vector2d.h"
 
-namespace math
+namespace primitives
 {
     typedef math::Vector2D Point2D;
 }
