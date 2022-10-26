@@ -98,5 +98,8 @@
     <ClInclude Include="math_utils\matrices_utils.h">
       <Filter>Header Files\math_utils</Filter>
     </ClInclude>
+    <ClInclude Include="math\point2d.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

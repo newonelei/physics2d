@@ -167,6 +167,7 @@
     <ClInclude Include="math\matrix2d.h" />
     <ClInclude Include="math\matrix3d.h" />
     <ClInclude Include="math\matrix4d.h" />
+    <ClInclude Include="math\point2d.h" />
     <ClInclude Include="math\vector2d.h" />
     <ClInclude Include="math\vector3d.h" />
     <ClInclude Include="math_utils\matrices_utils.h" />
