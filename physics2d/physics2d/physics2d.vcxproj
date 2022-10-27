@@ -160,6 +160,8 @@
     <ClCompile Include="math\vector3d.cpp" />
     <ClCompile Include="math_utils\matrices_utils.cpp" />
     <ClCompile Include="physics2d.cpp" />
+    <ClCompile Include="primitives\line2d.cpp" />
+    <ClCompile Include="primitives\rectangle2d.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\float_utils.h" />
@@ -167,14 +169,20 @@
     <ClInclude Include="math\matrix2d.h" />
     <ClInclude Include="math\matrix3d.h" />
     <ClInclude Include="math\matrix4d.h" />
-    <ClInclude Include="math\point2d.h" />
     <ClInclude Include="math\vector2d.h" />
     <ClInclude Include="math\vector3d.h" />
     <ClInclude Include="math_utils\matrices_utils.h" />
     <ClInclude Include="primitives\AABB.h" />
     <ClInclude Include="primitives\box2d.h" />
     <ClInclude Include="primitives\circle.h" />
+    <ClInclude Include="primitives\circle2d.h" />
     <ClInclude Include="primitives\collider2d.h" />
+    <ClInclude Include="primitives\oriented_rectangle2d.h" />
+    <ClInclude Include="primitives\primitives2d.h" />
+    <ClInclude Include="primitives\line2d.h" />
+    <ClInclude Include="primitives\point2d.h" />
+    <ClInclude Include="primitives\primitives2d.cpp" />
+    <ClInclude Include="primitives\rectangle2d.h" />
     <ClInclude Include="rigidbody\rigidbody2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

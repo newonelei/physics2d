@@ -31,6 +31,9 @@
     <Filter Include="Source Files\math_utils">
       <UniqueIdentifier>{7c0f177b-c22d-4981-b900-0cac866ba0d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\primitives">
+      <UniqueIdentifier>{2d7c5284-9ba5-4357-94fa-ecd3dcf6e817}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="physics2d.cpp">
@@ -56,6 +59,12 @@
     </ClCompile>
     <ClCompile Include="math_utils\matrices_utils.cpp">
       <Filter>Source Files\math_utils</Filter>
+    </ClCompile>
+    <ClCompile Include="primitives\line2d.cpp">
+      <Filter>Source Files\primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="primitives\rectangle2d.cpp">
+      <Filter>Source Files\primitives</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,8 +107,26 @@
     <ClInclude Include="math_utils\matrices_utils.h">
       <Filter>Header Files\math_utils</Filter>
     </ClInclude>
-    <ClInclude Include="math\point2d.h">
+    <ClInclude Include="primitives\point2d.h">
       <Filter>Header Files\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="primitives\line2d.h">
+      <Filter>Header Files\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="primitives\primitives2d.cpp">
+      <Filter>Source Files\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="primitives\primitives2d.h">
+      <Filter>Header Files\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="primitives\circle2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="primitives\rectangle2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="primitives\oriented_rectangle2d.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
