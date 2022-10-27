@@ -120,13 +120,13 @@
       <Filter>Header Files\primitives</Filter>
     </ClInclude>
     <ClInclude Include="primitives\circle2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="primitives\rectangle2d.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\primitives</Filter>
     </ClInclude>
     <ClInclude Include="primitives\oriented_rectangle2d.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="primitives\rectangle2d.h">
+      <Filter>Header Files\primitives</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
