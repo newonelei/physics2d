@@ -1,6 +1,8 @@
 #pragma once
 #include "math/vector2d.h"
 
+using namespace math;
+
 namespace primitives
 {
 	class Box2D
