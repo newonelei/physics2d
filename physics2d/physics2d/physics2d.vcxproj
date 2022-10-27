@@ -178,10 +178,8 @@
     <ClInclude Include="primitives\circle2d.h" />
     <ClInclude Include="primitives\collider2d.h" />
     <ClInclude Include="primitives\oriented_rectangle2d.h" />
-    <ClInclude Include="primitives\primitives2d.h" />
     <ClInclude Include="primitives\line2d.h" />
     <ClInclude Include="primitives\point2d.h" />
-    <ClInclude Include="primitives\primitives2d.cpp" />
     <ClInclude Include="primitives\rectangle2d.h" />
     <ClInclude Include="rigidbody\rigidbody2d.h" />
   </ItemGroup>

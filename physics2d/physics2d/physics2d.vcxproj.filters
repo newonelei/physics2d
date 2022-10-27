@@ -113,12 +113,6 @@
     <ClInclude Include="primitives\line2d.h">
       <Filter>Header Files\primitives</Filter>
     </ClInclude>
-    <ClInclude Include="primitives\primitives2d.cpp">
-      <Filter>Source Files\primitives</Filter>
-    </ClInclude>
-    <ClInclude Include="primitives\primitives2d.h">
-      <Filter>Header Files\primitives</Filter>
-    </ClInclude>
     <ClInclude Include="primitives\circle2d.h">
       <Filter>Header Files\primitives</Filter>
     </ClInclude>
