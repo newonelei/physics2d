@@ -8,8 +8,11 @@
 
 namespace primitives {
 typedef struct OrientedRectangle2D {
+  // center position
   Point2D position_;
+  // half extents on 2 axises
   math::Vector2D half_extents_;
+  // rotation of rectangle
   float rotation_;
 
   // default constructor : unit length rectangle at origin with no rotation

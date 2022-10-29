@@ -7,12 +7,13 @@
 #define _H_2D_RECTANGLE_
 namespace primitives {
 /*
-There are several ways
-to represent a rectangle: using a Min and Max point, using a Center and
-half-extents, or using a Position and a Size:
+There are several ways to represent a rectangle: using a Min and Max point,
+using a Center and half-extents, or using a Position and a Size:
 */
 typedef struct Rectangle2D {
+  // original position of rectangle 2d
   Point2D origin_;
+  // full size of rectangle
   math::Vector2D size_;
 
   // unit rectangle with size 1,1 at origin point
