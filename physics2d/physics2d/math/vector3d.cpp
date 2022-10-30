@@ -4,12 +4,9 @@
 namespace math {
 Vector3D::Vector3D(void) : x_(0), y_(0), z_(0) {}
 
-Vector3D::Vector3D(float xi, float yi, float zi)
-    : x_(xi), y_(yi), z_(zi) {}
+Vector3D::Vector3D(float xi, float yi, float zi) : x_(xi), y_(yi), z_(zi) {}
 
-float Vector3D::Magnitude(void) const {
-  return sqrtf(Dot(*this, *this));
-}
+float Vector3D::Magnitude(void) const { return sqrtf(Dot(*this, *this)); }
 
 void Vector3D::Normalize(void) {
   constexpr float tol = 0.00001f;
@@ -96,11 +93,13 @@ Vector3D Cross(const Vector3D& u, const Vector3D& v) {
 }
 
 // dot product
-float operator*(const Vector3D& u, const Vector3D& v) {
-  return static_cast<float>(u.x_ * v.x_ + u.y_ * v.y_ + u.z_ * v.z_);
+Vector3D operator*(const Vector3D& u, const Vector3D& v) {
+  return {u.x_ * v.x_, u.y_ * v.y_, u.z_ * v.z_};
 }
 
-float Dot(const Vector3D& u, const Vector3D& v) { return u * v; }
+float Dot(const Vector3D& u, const Vector3D& v) {
+  return static_cast<float>(u.x_ * v.x_ + u.y_ * v.y_ + u.z_ * v.z_);
+}
 
 /*
  * scalar multiplication
@@ -126,8 +125,8 @@ bool operator==(const Vector3D& u, const Vector3D& v) {
 
 bool operator!=(const Vector3D& u, const Vector3D& v) { return !(u == v); }
 
-float Magnitude(const Vector3D& v) { return sqrtf(v * v); }
-float MagnitudeSq(const Vector3D& v) { return v * v; }
+float Magnitude(const Vector3D& v) { return sqrtf(Dot(v, v)); }
+float MagnitudeSq(const Vector3D& v) { return Dot(v, v); }
 
 Vector3D Normalized(const Vector3D& v) { return v.Normalized(); }
 
@@ -157,7 +156,7 @@ Vector3D Reflection(const Vector3D& v, const Vector3D& normal) {
  * s = u dot (v cross w)
  */
 float TripleScalarProduct(const Vector3D& u, const Vector3D& v,
-                                 const Vector3D& w) {
-  return u * (v ^ w);
+                          const Vector3D& w) {
+  return Dot(u, (v ^ w));
 }
 }  // namespace math

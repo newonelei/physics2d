@@ -66,15 +66,15 @@
     <ClCompile Include="primitives\rectangle2d.cpp">
       <Filter>Source Files\primitives</Filter>
     </ClCompile>
+    <ClCompile Include="primitives\intersection2d.cpp">
+      <Filter>Source Files\primitives</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="primitives\AABB.h">
       <Filter>Header Files\primitives</Filter>
     </ClInclude>
     <ClInclude Include="primitives\box2d.h">
-      <Filter>Header Files\primitives</Filter>
-    </ClInclude>
-    <ClInclude Include="primitives\circle.h">
       <Filter>Header Files\primitives</Filter>
     </ClInclude>
     <ClInclude Include="primitives\collider2d.h">
@@ -120,6 +120,9 @@
       <Filter>Header Files\primitives</Filter>
     </ClInclude>
     <ClInclude Include="primitives\rectangle2d.h">
+      <Filter>Header Files\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="primitives\intersection2d.h">
       <Filter>Header Files\primitives</Filter>
     </ClInclude>
   </ItemGroup>

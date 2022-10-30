@@ -9,6 +9,7 @@ typedef struct Vector2D {
  public:
   Vector2D(void);
   Vector2D(float xi, float yi);
+  Vector2D(const Vector2D&) = default;
 
   float Magnitude(void) const;
   void Normalize(void);
@@ -52,8 +53,8 @@ Vector2D operator-(const Vector2D& u, const Vector2D& v);
  */
 float operator^(const Vector2D& u, const Vector2D& v);
 
+Vector2D operator*(const Vector2D& u, const Vector2D& v);
 // dot product
-float operator*(const Vector2D& u, const Vector2D& v);
 float Dot(const Vector2D& u, const Vector2D& v);
 
 /*

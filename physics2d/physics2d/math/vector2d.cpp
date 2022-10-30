@@ -8,9 +8,7 @@ Vector2D::Vector2D(void) : x_(0.0f), y_(0.0f) {}
 
 Vector2D::Vector2D(float xi, float yi) : x_(xi), y_(yi) {}
 
-float Vector2D::Magnitude(void) const {
-  return sqrtf(Dot(*this, *this));
-}
+float Vector2D::Magnitude(void) const { return sqrtf(Dot(*this, *this)); }
 
 void Vector2D::Normalize(void) {
   constexpr float tol = 0.00001f;
@@ -82,11 +80,13 @@ float operator^(const Vector2D& u, const Vector2D& v) {
 }
 
 // dot product
-float operator*(const Vector2D& u, const Vector2D& v) {
-  return static_cast<float>(u.x_ * v.x_ + u.y_ * v.y_);
+Vector2D operator*(const Vector2D& u, const Vector2D& v) {
+  return {u.x_ * v.x_, u.y_ * v.y_};
 }
 
-float Dot(const Vector2D& u, const Vector2D& v) { return u * v; }
+float Dot(const Vector2D& u, const Vector2D& v) {
+  return static_cast<float>(u.x_ * v.x_ + u.y_ * v.y_);
+}
 
 /*
  * scalar multiplication
@@ -112,8 +112,8 @@ bool operator==(const Vector2D& u, const Vector2D& v) {
 
 bool operator!=(const Vector2D& u, const Vector2D& v) { return !(u == v); }
 
-float Magnitude(const Vector2D& v) { return sqrtf(v * v); }
-float MagnitudeSq(const Vector2D& v) { return v * v; }
+float Magnitude(const Vector2D& v) { return sqrtf(Dot(v, v)); }
+float MagnitudeSq(const Vector2D& v) { return Dot(v, v); }
 
 Vector2D Normalized(const Vector2D& v) { return v.Normalized(); }
 
@@ -129,15 +129,13 @@ Vector2D Project(const Vector2D& len, const Vector2D& dir) {
   return dir * (dot / magSq);
 }
 
-Vector2D Perpendicular(const Vector2D& len,
-                              const Vector2D& dir) {
+Vector2D Perpendicular(const Vector2D& len, const Vector2D& dir) {
   return len - Project(len, dir);
 }
 
-Vector2D Reflection(const Vector2D& v, const Vector2D& normal)
-{
-	float d = Dot(v, normal);
-	return v - 2.0f * d * normal;
+Vector2D Reflection(const Vector2D& v, const Vector2D& normal) {
+  float d = Dot(v, normal);
+  return v - 2.0f * d * normal;
 }
 
 /*
@@ -145,7 +143,7 @@ Vector2D Reflection(const Vector2D& v, const Vector2D& normal)
  * s = u dot (v cross w)
  */
 Vector2D TripleScalarProduct(const Vector2D& u, const Vector2D& v,
-                                    const Vector2D& w) {
+                             const Vector2D& w) {
   return u * (v ^ w);
 }
 }  // namespace math

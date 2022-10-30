@@ -160,6 +160,7 @@
     <ClCompile Include="math\vector3d.cpp" />
     <ClCompile Include="math_utils\matrices_utils.cpp" />
     <ClCompile Include="physics2d.cpp" />
+    <ClCompile Include="primitives\intersection2d.cpp" />
     <ClCompile Include="primitives\line2d.cpp" />
     <ClCompile Include="primitives\rectangle2d.cpp" />
   </ItemGroup>
@@ -174,9 +175,9 @@
     <ClInclude Include="math_utils\matrices_utils.h" />
     <ClInclude Include="primitives\AABB.h" />
     <ClInclude Include="primitives\box2d.h" />
-    <ClInclude Include="primitives\circle.h" />
     <ClInclude Include="primitives\circle2d.h" />
     <ClInclude Include="primitives\collider2d.h" />
+    <ClInclude Include="primitives\intersection2d.h" />
     <ClInclude Include="primitives\oriented_rectangle2d.h" />
     <ClInclude Include="primitives\line2d.h" />
     <ClInclude Include="primitives\point2d.h" />

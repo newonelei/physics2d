@@ -43,8 +43,9 @@ Vector3D operator-(const Vector3D& u, const Vector3D& v);
 Vector3D operator^(const Vector3D& u, const Vector3D& v);
 Vector3D Cross(const Vector3D& u, const Vector3D& v);
 
+Vector3D operator*(const Vector3D& u, const Vector3D& v);
+
 // dot product
-float operator*(const Vector3D& u, const Vector3D& v);
 float Dot(const Vector3D& u, const Vector3D& v);
 
 /*
