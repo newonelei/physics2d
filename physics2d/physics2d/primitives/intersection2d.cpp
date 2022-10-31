@@ -110,13 +110,13 @@ bool LineRectangle(const Line2D& line, const Rectangle2D& rect) {
   math::Vector2D min = (GetMin(rect) - line.start_) * norm;
   math::Vector2D max = (GetMax(rect) - line.start_) * norm;
 
-    float tmin = fmaxf(fminf(min.x_, max.x_), fminf(min.y_, max.y_));
-    float tmax = fminf(fmaxf(min.x_, max.x_), fmaxf(min.y_, max.y_));
-    if (tmax < 0 || tmin > tmax) {
-        return false;
-    }
-    float t = (tmin < 0.0f) ? tmax : tmin;
-    return t > 0.0f && t * t < LengthSq(line);
+  float tmin = fmaxf(fminf(min.x_, max.x_), fminf(min.y_, max.y_));
+  float tmax = fminf(fmaxf(min.x_, max.x_), fmaxf(min.y_, max.y_));
+  if (tmax < 0 || tmin > tmax) {
+    return false;
+  }
+  float t = (tmin < 0.0f) ? tmax : tmin;
+  return t > 0.0f && t * t < LengthSq(line);
 #else
 
   // do a raycast
@@ -132,7 +132,7 @@ bool LineRectangle(const Line2D& line, const Rectangle2D& rect) {
   float tmin = fmaxf(fminf(t1, t2), fminf(t3, t4));
   float tmax = fminf(fmaxf(t1, t2), fmaxf(t3, t4));
 
-  // if tmax < 0, ray (line) is interesting AABB, but whole AABB is behind us
+  // if tmax < 0, ray (line) is intersecting AABB, but whole AABB is behind us
   // so the line segment is not intersecting
   if (tmax < 0) return false;
 
@@ -151,29 +151,30 @@ bool LineRectangle(const Line2D& line, const Rectangle2D& rect) {
 #endif
 }
 
-bool LineOrientedRectangle(const Line2D& line, const OrientedRectangle2D& rect)
-{
-    float theta = -DEG2RAD(rect.rotation_);
-    float zRotation2x2[] = {
-        cosf(theta), sinf(theta),
-        -sinf(theta), cosf(theta)
-    };
+bool LineOrientedRectangle(const Line2D& line,
+                           const OrientedRectangle2D& rect) {
+  float theta = -DEG2RAD(rect.rotation_);
+  float zRotation2x2[] = {cosf(theta), sinf(theta), -sinf(theta), cosf(theta)};
 
-    Line2D localLine;
+  Line2D localLine;
 
-    // transform line(from rect position to line start) from world space to local space
-    math::Vector2D rotVector = line.start_ - rect.position_;
-    math::Multiply(rotVector.as_array_, math::Vector2D(rotVector.x_, rotVector.y_).as_array_,
-        1, 2, zRotation2x2, 2, 2);
-    localLine.start_ = rotVector + rect.half_extents_;
+  // transform line(from rect position to line start) from world space to local
+  // space
+  math::Vector2D rotVector = line.start_ - rect.position_;
+  math::Multiply(rotVector.as_array_,
+                 math::Vector2D(rotVector.x_, rotVector.y_).as_array_, 1, 2,
+                 zRotation2x2, 2, 2);
+  localLine.start_ = rotVector + rect.half_extents_;
 
-    // transform line(from rect position to line end) from world space to local space
-    rotVector = line.end_ - rect.position_;
-    math::Multiply(rotVector.as_array_, math::Vector2D(rotVector.x_, rotVector.y_).as_array_,
-        1, 2, zRotation2x2, 2, 2);
-    localLine.end_ = rotVector + rect.half_extents_;
+  // transform line(from rect position to line end) from world space to local
+  // space
+  rotVector = line.end_ - rect.position_;
+  math::Multiply(rotVector.as_array_,
+                 math::Vector2D(rotVector.x_, rotVector.y_).as_array_, 1, 2,
+                 zRotation2x2, 2, 2);
+  localLine.end_ = rotVector + rect.half_extents_;
 
-    Rectangle2D localRectangle(Point2D(), rect.half_extents_ * 2.0f);
-    return LineRectangle(localLine, localRectangle);
+  Rectangle2D localRectangle(Point2D(), rect.half_extents_ * 2.0f);
+  return LineRectangle(localLine, localRectangle);
 }
 }  // namespace primitives
