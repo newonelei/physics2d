@@ -30,6 +30,9 @@ bool PointInOrientedRectangle(const Point2D&,
 bool LineCircle(const Line2D& line, const Circle2D& circle);
 bool LineRectangle(const Line2D& line, const Rectangle2D& rect);
 bool LineOrientedRectangle(const Line2D& line, const OrientedRectangle2D& rect);
+
+// 2d collisions
+bool CircleCircle(const Circle2D& c1, const Circle2D& c2);
 }  // namespace primitives
 
 #endif  // _H_2D_INTERSECTION_

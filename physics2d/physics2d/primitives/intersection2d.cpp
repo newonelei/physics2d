@@ -177,4 +177,18 @@ bool LineOrientedRectangle(const Line2D& line,
   Rectangle2D localRectangle(Point2D(), rect.half_extents_ * 2.0f);
   return LineRectangle(localLine, localRectangle);
 }
+
+/////////////////////////////////////////////////////////////////
+/////////////////// 2d collisions /////////////////////
+
+bool CircleCircle(const Circle2D& c1, const Circle2D& c2) {
+  // To find the collision between two circles, we first create a line between,
+  // the two circles. Next, we compare this line to the sum of the radii of the
+  // two circles.To avoid  the square root operation involved in finding the
+  // length of a line, we instead square the sum of the radii.
+  Line2D line(c1.position_, c2.position_);
+  float radiousSum = c1.radius_ + c2.radius_;
+  return LengthSq(line) <= radiousSum * radiousSum;
+}
+
 }  // namespace primitives
